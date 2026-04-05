@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>TAMNALAI STORE</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -25,17 +26,16 @@ align-items:center;
 }
 
 .logo{
-font-size:20px;
 font-weight:600;
+font-size:18px;
 color:#d04bff;
 }
 
 .banner{
-background:linear-gradient(45deg,#c03cff,#6b2cff);
-padding:30px;
-text-align:center;
-border-radius:12px;
 margin:15px;
+padding:25px;
+border-radius:12px;
+background:linear-gradient(45deg,#c03cff,#6b2cff);
 }
 
 .banner h2{
@@ -46,8 +46,37 @@ margin:0;
 padding:15px;
 }
 
-.input-box{
-margin-bottom:10px;
+.section{
+margin-top:25px;
+}
+
+.products{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.card{
+background:#1c1c24;
+border-radius:10px;
+padding:12px;
+text-align:center;
+cursor:pointer;
+}
+
+.card img{
+width:100%;
+border-radius:8px;
+}
+
+.price{
+color:#d04bff;
+font-weight:600;
+}
+
+.product-page{
+display:none;
+padding:15px;
 }
 
 input{
@@ -55,14 +84,9 @@ width:100%;
 padding:12px;
 border-radius:8px;
 border:none;
+margin-bottom:10px;
 background:#1e1e26;
 color:white;
-}
-
-.section-title{
-margin-top:25px;
-margin-bottom:10px;
-font-size:18px;
 }
 
 .packages{
@@ -73,121 +97,118 @@ gap:10px;
 
 .package{
 background:#1c1c24;
-padding:15px;
-border-radius:10px;
+padding:12px;
+border-radius:8px;
 cursor:pointer;
-border:2px solid transparent;
-}
-
-.package:hover{
-border:2px solid #c03cff;
-}
-
-.price{
-color:#d04bff;
-font-weight:600;
 }
 
 button{
 width:100%;
-margin-top:20px;
 padding:14px;
+margin-top:15px;
 background:linear-gradient(45deg,#ff2bd6,#7c3cff);
 border:none;
 border-radius:10px;
-font-size:16px;
 color:white;
 font-weight:600;
-cursor:pointer;
-}
-
-footer{
-text-align:center;
-padding:20px;
-opacity:0.7;
+font-size:16px;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header>
+
 <div class="logo">TAMNALAI STORE</div>
+
 </header>
+
+
+<div id="home">
 
 <div class="banner">
 <h2>Mobile Legends Top Up</h2>
 <p>Fast • Safe • Instant Delivery</p>
 </div>
 
+
 <div class="container">
 
-<div class="section-title">Enter Game ID</div>
+<div class="section">
+<h3>MOST SELLING 🔥</h3>
 
-<div class="input-box">
+<div class="products">
+
+<div class="card" onclick="openProduct()">
+<img src="https://i.imgur.com/Jn4xQ4C.png">
+<p>Weekly Pass Combo</p>
+</div>
+
+<div class="card" onclick="openProduct()">
+<img src="https://i.imgur.com/xN4bB9C.png">
+<p>Mobile Legends Diamonds</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="product-page" id="product">
+
+<h3>Mobile Legends Top Up</h3>
+
 <input id="userid" placeholder="User ID">
-</div>
 
-<div class="input-box">
 <input id="zoneid" placeholder="Zone ID">
-</div>
 
-<div class="section-title">Select Package</div>
+
+<h4>Select Package</h4>
 
 <div class="packages">
 
-<div class="package" onclick="selectPackage('Weekly Pass',152)">
-Weekly Pass<br>
-<span class="price">₹152</span>
-</div>
+<div class="package" onclick="selectPack('Weekly Pass',152)">Weekly Pass ₹152</div>
 
-<div class="package" onclick="selectPackage('55 Diamonds',80)">
-55 Diamonds<br>
-<span class="price">₹80</span>
-</div>
+<div class="package" onclick="selectPack('55 Diamonds',80)">55 Diamonds ₹80</div>
 
-<div class="package" onclick="selectPackage('110 Diamonds',156)">
-110 Diamonds<br>
-<span class="price">₹156</span>
-</div>
+<div class="package" onclick="selectPack('110 Diamonds',156)">110 Diamonds ₹156</div>
 
-<div class="package" onclick="selectPackage('172 Diamonds',244)">
-172 Diamonds<br>
-<span class="price">₹244</span>
-</div>
-
-<div class="package" onclick="selectPackage('257 Diamonds',353)">
-257 Diamonds<br>
-<span class="price">₹353</span>
-</div>
-
-<div class="package" onclick="selectPackage('343 Diamonds',475)">
-343 Diamonds<br>
-<span class="price">₹475</span>
-</div>
+<div class="package" onclick="selectPack('172 Diamonds',244)">172 Diamonds ₹244</div>
 
 </div>
+
 
 <button onclick="orderNow()">BUY NOW</button>
 
 </div>
 
-<footer>
-TAMNALAI STORE © 2026
-</footer>
 
 <script>
 
 let product=""
 let price=""
 
-function selectPackage(p,pr){
+function openProduct(){
+
+document.getElementById("home").style.display="none"
+document.getElementById("product").style.display="block"
+
+}
+
+function selectPack(p,pr){
 
 product=p
 price=pr
 
-alert("Selected: "+p)
+alert("Selected "+p)
 
 }
 
@@ -197,22 +218,14 @@ let uid=document.getElementById("userid").value
 let zid=document.getElementById("zoneid").value
 
 if(uid=="" || zid==""){
-alert("Enter User ID & Zone ID")
+
+alert("Enter ID")
+
 return
+
 }
 
-if(product==""){
-alert("Select Package")
-return
-}
-
-let msg=
-"MLBB TOPUP ORDER%0A%0A"+
-"Store: TAMNALAI STORE%0A"+
-"User ID: "+uid+"%0A"+
-"Zone ID: "+zid+"%0A"+
-"Package: "+product+"%0A"+
-"Price: ₹"+price
+let msg="MLBB ORDER%0A%0AStore: TAMNALAI STORE%0AUser ID: "+uid+"%0AZone ID: "+zid+"%0APackage: "+product+"%0APrice: ₹"+price
 
 window.open("https://wa.me/919862277104?text="+msg)
 
